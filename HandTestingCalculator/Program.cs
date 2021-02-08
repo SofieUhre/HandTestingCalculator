@@ -8,21 +8,37 @@ namespace HandTestingCalculator
         {
             Calculator calculator = new Calculator();
 
-            double a = 2;
-            double b = 2;
+            double a = 4.2;
+            double b = 4.5;
+            double c = 0.1;
+            double d = 3.2;
+            double e = 10.4;
+            double f = 8.0;
 
-            double add = calculator.Add(a,b);
-            Console.WriteLine("The result of " + a + " puls " + b + " is equal to " + add);
+            //Tester Add()
+            Console.WriteLine("Testing Add()");
+            Console.WriteLine("Add({0}, {1}) = {2}", a, b, calculator.Add(a, b));
+            Console.WriteLine("Add({0}, {1}) = {2}", c, d, calculator.Add(c, d));
+            Console.WriteLine("Add({0}, {1}) = {2}", e, f, calculator.Add(e, f));
 
-            double substract = calculator.Substract(a, b);
-            Console.WriteLine("The result of " + a + " minus " + b + " is equal to " + substract);
+            //Tester Substract()
+            Console.WriteLine("\nTesting Substact()");
+            Console.WriteLine("Substract({0}, {1}) = {2}", a, b, calculator.Substract(a, b));
+            Console.WriteLine("Substract({0}, {1}) = {2}", c, d, calculator.Substract(c, d));
+            Console.WriteLine("Substract({0}, {1}) = {2}", e, f, calculator.Substract(e, f));
 
-            double multiply = calculator.Multiply(a, b);
-            Console.WriteLine("The result of " + a + " multiply " + b + " is equal to " + multiply);
+            //Tester Multiply()
+            Console.WriteLine("\nTesting Multiply()");
+            Console.WriteLine("Multiply({0}, {1}) = {2}", a, b, calculator.Multiply(a, b));
+            Console.WriteLine("Multiply({0}, {1}) = {2}", c, d, calculator.Multiply(c, d));
+            Console.WriteLine("Multiply({0}, {1}) = {2}", e, f, calculator.Multiply(e, f));
 
-            double power = calculator.Power(a, b);
-            Console.WriteLine("The result of " + a + " powered " + b + " is equal to " + power);
-
+            //Tester Power()
+            Console.WriteLine("\nTesting Power()");
+            Console.WriteLine("Power({0}, {1}) = {2}", a, b, calculator.Power(a, b));
+            Console.WriteLine("Power({0}, {1}) = {2}", c, d, calculator.Power(c, d));
+            Console.WriteLine("Power({0}, {1}) = {2}", e, f, calculator.Power(e, f));
+            
         }
     }
 }
