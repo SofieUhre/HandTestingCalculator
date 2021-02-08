@@ -10,6 +10,7 @@ namespace Calculator_UnitTest
         [SetUp]
         public void Setup()
         {
+            //Arrange
             uut = new Calculator();
         }
 
@@ -20,8 +21,10 @@ namespace Calculator_UnitTest
         [TestCase(0, 0, 0)]
         public void Add_AddAAndB_ExpectResult(double a, double b, double expectedResult)
         {
+            //Act
             double result = uut.Add(a, b);
 
+            //Assert
             Assert.AreEqual(result, expectedResult);
         }
 
@@ -32,8 +35,10 @@ namespace Calculator_UnitTest
         [TestCase(0, 0, 0)]
         public void Substract_AddAAndB_ExpectResult(double a, double b, double expectedResult)
         {
+            //Act
             double result = uut.Substract(a, b);
 
+            //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
         }
 
@@ -44,19 +49,37 @@ namespace Calculator_UnitTest
         [TestCase(0, 0, 0)]
         public void Multiply_AddAAndB_ExpectResult(double a, double b, double expectedResult)
         {
+            //Act
             double result = uut.Multiply(a, b);
 
+            //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
         }
 
         [TestCase(2.2, 2.3, 6.131)]
         [TestCase(5.7, 9.1, 7558945.022)]
         [TestCase(3.1, 4.9, 255.666)]
-        public void power_AddxAndexp_ExpectResult(double x, double exp, double expectedResult)
+        public void Power_AddxAndexp_ExpectResult(double x, double exp, double expectedResult)
         {
+            //Act
             double result = uut.Power(x,exp);
 
+            //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+        }
+
+        [TestCase(2.2, 2.3, 0.96)]
+        [TestCase(5.7, 9.1, 0.63)]
+        [TestCase(3.1, 4.9, 0.63)]
+        [TestCase(106.9, 365.5, 0.29)]
+        public void Divide_AddDevidendAndDevisor_ExpectResult(double devidend, double devisor, double expectedResult)
+        {
+            //Act
+            double result = uut.Divide(devidend, devisor);
+            
+
+            //Assert
+            Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
         }
     }
 }

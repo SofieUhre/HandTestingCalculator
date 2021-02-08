@@ -29,5 +29,11 @@ namespace HandTestingCalculator
             double result = Math.Pow(x, exp);
             return result;
         }
+
+        public double Divide(double devidend, double devisor)
+        {
+            double result = devidend / devisor;
+            return result;
+        }
     }
 }
