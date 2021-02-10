@@ -9,7 +9,7 @@ namespace HandTestingCalculator
     {
         public double Accumulator { get; private set; }
 
-        public void clear()
+        public void Clear()
         {
             Accumulator = 0;
         }

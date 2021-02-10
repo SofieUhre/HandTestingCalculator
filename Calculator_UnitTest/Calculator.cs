@@ -16,6 +16,16 @@ namespace Calculator_UnitTest
             uut = new Calculator();
         }
 
+        [Test]
+        public void Clear_CallMethod_ExpectZero()
+        {
+            //Act
+            uut.clear();
+
+            //Assert
+            Assert.AreEqual(uut.Accumulator, Is.EqualTo(0));
+        }
+
         [TestCase(2.2, 2.3,4.5)]
         [TestCase(5.7, 9.1, 14.8)]
         [TestCase(3.1, 4.9, 8)]
@@ -35,7 +45,7 @@ namespace Calculator_UnitTest
         [TestCase(4.9, 14.9)]
         [TestCase(365.5, 375.5)]
         [TestCase(0, 10)]
-        public void Add_AddAAndB_ExpectResult(double added, double expectedResult)
+        public void Add_AddAdded_ExpectResult(double added, double expectedResult)
         {
             //Arrange 
             uut.Add(5, 5);
