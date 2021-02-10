@@ -35,8 +35,36 @@ namespace HandTestingCalculator
 
         public double Divide(double devidend, double devisor)
         {
-            double result = devidend / devisor;
+            double result = 0;
+            
+            try
+            {
+                result = devidend / devisor;
+                Accumulator = result;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e);
+            }
+
             return result;
+        }
+
+        public double Devide(double devisor)
+        {
+            try
+            {
+                double result = Accumulator/devisor;
+                Accumulator = result;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return Accumulator;
+
+
         }
     }
 }
