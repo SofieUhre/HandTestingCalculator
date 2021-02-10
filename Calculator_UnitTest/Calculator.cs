@@ -20,11 +20,10 @@ namespace Calculator_UnitTest
         public void Clear_CallMethod_ExpectZero()
         {
             //Act
-            uut.Clear();
+            uut.clear();
 
             //Assert
-            double expectedResult = 0.0;
-            Assert.AreEqual(uut.Accumulator, expectedResult);
+            Assert.AreEqual(uut.Accumulator, Is.EqualTo(0));
         }
 
         [TestCase(2.2, 2.3,4.5)]
@@ -57,7 +56,7 @@ namespace Calculator_UnitTest
             //Assert
             Assert.AreEqual(result, expectedResult);
         }
-        
+
         [TestCase(2.2, 2.3, -0.1)]
         [TestCase(9.1, 5.7,  3.4)]
         [TestCase(3.1, 4.9, -1.8)]
