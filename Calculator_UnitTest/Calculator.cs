@@ -1,5 +1,7 @@
+using System;
 using NUnit.Framework;
 using HandTestingCalculator;
+using NuGet.Frameworks;
 
 namespace Calculator_UnitTest
 {
@@ -82,5 +84,7 @@ namespace Calculator_UnitTest
             //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
         }
+
+       
     }
 }
