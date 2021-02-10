@@ -17,12 +17,14 @@ namespace HandTestingCalculator
         public double Add(double a, double b)
         {
             double result = a + b;
+            Accumulator = result;
             return result;
         }
 
         public double Add(double added)
         {
             double result = Accumulator + added;
+            Accumulator = result;
             return result;
         }
 
@@ -69,7 +71,11 @@ namespace HandTestingCalculator
             return result;
         }
 
+<<<<<<< HEAD
         public double Devide(double devisor)
+=======
+        public double Divide(double devisor)
+>>>>>>> 630c5fdc0b01c64c866b9a5ffef3bd589dbb1926
         {
             try
             {
@@ -83,7 +89,10 @@ namespace HandTestingCalculator
 
             return Accumulator;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 630c5fdc0b01c64c866b9a5ffef3bd589dbb1926
         }
     }
 }
