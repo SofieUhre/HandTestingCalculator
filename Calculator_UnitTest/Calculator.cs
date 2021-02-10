@@ -61,6 +61,7 @@ namespace Calculator_UnitTest
         [TestCase(2.2, 2.3, 6.131)]
         [TestCase(5.7, 9.1, 7558945.022)]
         [TestCase(3.1, 4.9, 255.666)]
+        [TestCase(7.5,0,1)]
         public void Power_AddxAndexp_ExpectResult(double x, double exp, double expectedResult)
         {
             //Act
