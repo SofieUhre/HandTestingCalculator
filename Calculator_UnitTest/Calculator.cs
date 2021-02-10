@@ -20,7 +20,7 @@ namespace Calculator_UnitTest
         public void Clear_CallMethod_ExpectZero()
         {
             //Act
-            uut.clear();
+            uut.Clear();
 
             //Assert
             Assert.AreEqual(uut.Accumulator, Is.EqualTo(0));
@@ -111,6 +111,32 @@ namespace Calculator_UnitTest
             //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
         }
+
+        [Test]
+        public void Divide_DevideByzero_Exception()
+        {
+            //var ex = Assert.Throws<Exception>(() => uut.Divide(2,0));
+            //Assert.That(ex.Message, Is.EqualTo(""));
+        }
+
+        [TestCase(10,1,10)]
+        [TestCase(10,10, 1)]
+        [TestCase(0,7, 0)]
+        [TestCase(7.5, 2,3.75)]
+        public void Divide_DivideYbyX_expectZ(double y, double x, double z)
+        {
+            //Arrange
+            uut.Add(y);
+
+            //Act
+            double result = uut.Divide(x);
+
+            //Assert
+            Assert.That(result, Is.EqualTo(z).Within(0.00001));
+        }
+
+
+
 
         [TestCase(2.2, 2.3, 6.131)]
         [TestCase(5.7, 9.1, 7558945.022)]

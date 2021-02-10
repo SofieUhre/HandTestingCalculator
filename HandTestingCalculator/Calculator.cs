@@ -63,7 +63,7 @@ namespace HandTestingCalculator
             return result;
         }
 
-        public double Devide(double devisor)
+        public double Divide(double devisor)
         {
             try
             {
@@ -73,6 +73,7 @@ namespace HandTestingCalculator
             catch (DivideByZeroException e)
             {
                 Console.WriteLine(e);
+                throw;
             }
 
             return Accumulator;
