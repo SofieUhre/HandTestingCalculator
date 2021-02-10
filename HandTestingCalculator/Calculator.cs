@@ -8,10 +8,21 @@ namespace HandTestingCalculator
 
     {
         public double Accumulator { get; private set; }
+
+        public void clear()
+        {
+            Accumulator = 0;
+        }
          
         public double Add(double a, double b)
         {
             double result = a + b;
+            return result;
+        }
+
+        public double Add(double added)
+        {
+            double result = Accumulator + added;
             return result;
         }
 
