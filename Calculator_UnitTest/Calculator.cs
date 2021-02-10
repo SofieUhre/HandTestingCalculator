@@ -30,6 +30,23 @@ namespace Calculator_UnitTest
             Assert.AreEqual(result, expectedResult);
         }
 
+        [TestCase(2.3, 12.3)]
+        [TestCase(9.1, 19.1)]
+        [TestCase(4.9, 14.9)]
+        [TestCase(365.5, 375.5)]
+        [TestCase(0, 10)]
+        public void Add_AddAAndB_ExpectResult(double added, double expectedResult)
+        {
+            //Arrange 
+            uut.Add(5, 5);
+
+            //Act
+            double result = uut.Add(added);
+
+            //Assert
+            Assert.AreEqual(result, expectedResult);
+        }
+
         [TestCase(2.2, 2.3, -0.1)]
         [TestCase(9.1, 5.7,  3.4)]
         [TestCase(3.1, 4.9, -1.8)]
