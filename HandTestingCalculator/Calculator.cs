@@ -5,7 +5,10 @@ using System.Text;
 namespace HandTestingCalculator
 {
     public class Calculator
+
     {
+        public double Accumulator { get; private set; }
+         
         public double Add(double a, double b)
         {
             double result = a + b;
