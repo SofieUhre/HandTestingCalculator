@@ -93,7 +93,7 @@ namespace Calculator_UnitTest
         {
 
             //Arrange
-            
+            uut.Add(Accumulator);
 
             //Act
             double result = uut.Power(uut.Accumulator, exp);
