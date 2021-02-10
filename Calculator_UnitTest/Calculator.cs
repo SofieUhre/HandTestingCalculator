@@ -40,6 +40,7 @@ namespace Calculator_UnitTest
             Assert.AreEqual(result, expectedResult);
         }
 
+<<<<<<< HEAD
         [TestCase(2.3, 12.3)]
         [TestCase(9.1, 19.1)]
         [TestCase(4.9, 14.9)]
@@ -57,6 +58,8 @@ namespace Calculator_UnitTest
             Assert.AreEqual(result, expectedResult);
         }
 
+=======
+>>>>>>> 9afa2ed6e9fde2a829f3dc55621138cdf502aa23
         [TestCase(2.2, 2.3, -0.1)]
         [TestCase(9.1, 5.7,  3.4)]
         [TestCase(3.1, 4.9, -1.8)]
@@ -112,7 +115,6 @@ namespace Calculator_UnitTest
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
         }
 
-<<<<<<< HEAD
         [TestCase(2.2, 2.3, 6.131)]
         [TestCase(5.7, 9.1, 7558945.022)]
         [TestCase(3.1, 4.9, 255.666)]
@@ -121,7 +123,7 @@ namespace Calculator_UnitTest
         {
 
             //Arrange
-            
+            uut.Add(Accumulator);
 
             //Act
             double result = uut.Power(uut.Accumulator, exp);
@@ -133,8 +135,5 @@ namespace Calculator_UnitTest
 
 
 
-=======
-       
->>>>>>> 8d95a6d8698542e4956ae1fb6d8c6f4c27ff3f90
     }
 }
