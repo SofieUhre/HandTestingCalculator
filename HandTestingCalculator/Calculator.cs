@@ -17,12 +17,14 @@ namespace HandTestingCalculator
         public double Add(double a, double b)
         {
             double result = a + b;
+            Accumulator = result;
             return result;
         }
 
         public double Add(double added)
         {
             double result = Accumulator + added;
+            Accumulator = result;
             return result;
         }
 
