@@ -38,5 +38,13 @@ namespace HandTestingCalculator
             double result = devidend / devisor;
             return result;
         }
+
+
+        public double Power(double exp)
+        {
+            double result = Math.Pow(Accumulator, exp);
+            Accumulator = result;
+            return result;
+        }
     }
 }
