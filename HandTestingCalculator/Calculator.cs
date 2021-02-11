@@ -34,10 +34,22 @@ namespace HandTestingCalculator
             return result;
         }
 
+        public double Subtract(double a)
+        {
+            Accumulator = Accumulator - a;
+            return Accumulator;
+        }
+
         public double Multiply(double a, double b)
         {
             double result = a * b;
             return result;
+        }
+
+        public double Multiply(double a)
+        {
+            Accumulator = Accumulator * a;
+            return Accumulator;
         }
 
         public double Power(double x, double exp)
