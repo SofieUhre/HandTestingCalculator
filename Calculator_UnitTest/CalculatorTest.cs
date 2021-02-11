@@ -107,7 +107,6 @@ namespace Calculator_UnitTest
             //Act
             double result = uut.Divide(devidend, devisor);
             
-
             //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
         }
@@ -127,10 +126,6 @@ namespace Calculator_UnitTest
 
             //Assert
             Assert.That(uut.Accumulator, Is.EqualTo(0));
-            
-            //var ex = Assert.Catch<myDivsionByZeroException>(() => uut.Divide(2, 0));
-            //StringAssert.Contains("Du har divideret med 0 din idiot!", ex.Message);
-            //Assert.That(() => uut.Divide(2,0),Throws.TypeOf<DivisionByZeroException>());
         }
 
         [TestCase(10,1,10)]
@@ -145,10 +140,8 @@ namespace Calculator_UnitTest
             //Act
             double result = uut.Divide(x);
 
-            //Assert
-            //Assert.That(result, Is.EqualTo(z).Within(0.00001));
+            Assert.That(result, Is.EqualTo(z).Within(0.00001));
 
-            Assert.Pass();
         }
 
         [TestCase(1)]

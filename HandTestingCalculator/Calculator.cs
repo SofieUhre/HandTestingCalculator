@@ -46,6 +46,13 @@ namespace HandTestingCalculator
             return result;
         }
 
+        public double Power(double exp)
+        {
+            double result = Math.Pow(Accumulator, exp);
+            Accumulator = result;
+            return result;
+        }
+
         public double Divide(double devidend, double devisor)
         {
             double result = 0;
@@ -87,14 +94,6 @@ namespace HandTestingCalculator
             }
 
             return Accumulator;
-        }
-
-
-        public double Power(double exp)
-        {
-            double result = Math.Pow(Accumulator, exp);
-            Accumulator = result;
-            return result;
         }
     }
 }
