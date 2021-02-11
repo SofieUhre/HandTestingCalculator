@@ -2,12 +2,13 @@
 
 namespace HandTestingCalculator
 {
-    public class DivisionByZeroException : Exception
+    public class myDivsionByZeroException : Exception
     {
         public string ErrorMessage { get; set; }
-        public DivisionByZeroException(string message)
+        public myDivsionByZeroException(string message)
         {
             ErrorMessage = message;
+
         }
     }
 }

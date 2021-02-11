@@ -112,11 +112,25 @@ namespace Calculator_UnitTest
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
         }
 
-        [Test]
-        public void Divide_DevideByzero_Exception()
+        [TestCase(1)]
+        [TestCase(10)]
+        [TestCase(0.9)]
+        [TestCase(0)]
+        [TestCase(137.57)]
+        public void Divide_DevideVariableByzero_Exception(double variable)
         {
-            //var ex = Assert.Throws<Exception>(() => uut.Divide(2,0));
-            //Assert.That(ex.Message, Is.EqualTo(""));
+            //Arrange
+            uut.Add(10);
+
+            //Act
+            uut.Divide(variable, 0);
+
+            //Assert
+            Assert.That(uut.Accumulator, Is.EqualTo(0));
+            
+            //var ex = Assert.Catch<myDivsionByZeroException>(() => uut.Divide(2, 0));
+            //StringAssert.Contains("Du har divideret med 0 din idiot!", ex.Message);
+            //Assert.That(() => uut.Divide(2,0),Throws.TypeOf<DivisionByZeroException>());
         }
 
         [TestCase(10,1,10)]
@@ -132,10 +146,28 @@ namespace Calculator_UnitTest
             double result = uut.Divide(x);
 
             //Assert
-            Assert.That(result, Is.EqualTo(z).Within(0.00001));
+            //Assert.That(result, Is.EqualTo(z).Within(0.00001));
+
+            Assert.Pass();
         }
 
+        [TestCase(1)]
+        [TestCase(10)]
+        [TestCase(0.9)]
+        [TestCase(0)]
+        [TestCase(137.57)]
+        public void Divide_DevideAccumulatorByzero_Exception(double variable)
+        {
+            //Arrange
+            uut.Add(variable);
 
+            //Act
+            uut.Divide(0);
+
+            //Assert
+            Assert.That(uut.Accumulator, Is.EqualTo(0));
+
+        }
 
 
         [TestCase(2.2, 2.3, 6.131)]

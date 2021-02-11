@@ -13,7 +13,7 @@ namespace HandTestingCalculator
         {
             Accumulator = 0;
         }
-         
+
         public double Add(double a, double b)
         {
             double result = a + b;
@@ -53,43 +53,36 @@ namespace HandTestingCalculator
             {
                 if (devisor == 0)
                 {
-                    Accumulator = 0;
-                    throw new DivisionByZeroException("Illegal action - devision by zero. Calculator is set to zero");
+                    throw new myDivsionByZeroException("Du har divideret med 0 din idiot!");
                 }
-                else
-                {
-                    result = devidend / devisor;
-                    Accumulator = result;
-                }
+                result = devidend / devisor;
+
+                Accumulator = result;
             }
-            catch (DivisionByZeroException e)
+            catch (myDivsionByZeroException e)
             {
+                Accumulator = result;
                 Console.WriteLine(e.ErrorMessage);
             }
-            
 
             return result;
         }
 
         public double Divide(double devisor)
         {
-
             double result = 0;
             try
             {
                 if (devisor == 0)
                 {
-                    Accumulator = 0;
-                    throw new DivisionByZeroException("Illegal action - devision by zero. Calculator is set to zero");
+                    throw new myDivsionByZeroException("Du har divideret med 0 din idiot!");
                 }
-                else
-                {
-                    result = Accumulator / devisor;
-                    Accumulator = result;
-                }
+                result = Accumulator  / devisor;
+                Accumulator = result;
             }
-            catch (DivisionByZeroException e)
+            catch (myDivsionByZeroException e)
             {
+                Accumulator = 0;
                 Console.WriteLine(e.ErrorMessage);
             }
 

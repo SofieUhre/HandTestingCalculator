@@ -14,6 +14,9 @@ namespace HandTestingCalculator
             double d = 3.2;
             double e = 10.4;
             double f = 8.0;
+            calculator.Divide(10, 0);
+            Console.WriteLine(calculator.Add(20));
+            calculator.Divide(0);
 
             //Tester Add()
             Console.WriteLine("Testing Add()");
