@@ -102,6 +102,23 @@ namespace Calculator_UnitTest
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
         }
 
+
+        [TestCase(0, 0)]
+        [TestCase(10, 100)]
+        [TestCase(1.9, 19)]
+        [TestCase(123.39, 1233.9)]
+        public void Multiply_ATimesAccumulator_ExpectResult(double a, double expectedResult)
+        {
+            //Arrange
+            uut.Add(10);
+
+            //Act
+            double result = uut.Multiply(a);
+
+            //Assert
+            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+        }
+
         [TestCase(2.2, 2.3, 6.131)]
         [TestCase(5.7, 9.1, 7558945.022)]
         [TestCase(3.1, 4.9, 255.666)]
