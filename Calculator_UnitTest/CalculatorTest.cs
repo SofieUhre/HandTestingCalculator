@@ -23,7 +23,7 @@ namespace Calculator_UnitTest
             uut.Clear();
 
             //Assert
-            Assert.AreEqual(uut.Accumulator, Is.EqualTo(0));
+            Assert.That(uut.Accumulator, Is.EqualTo(0));
         }
 
         [TestCase(2.2, 2.3,4.5)]
