@@ -65,11 +65,28 @@ namespace Calculator_UnitTest
         public void Substract_AddAAndB_ExpectResult(double a, double b, double expectedResult)
         {
             //Act
-            double result = uut.Substract(a, b);
+            double result = uut.Subtract(a, b);
 
             //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
         }
+
+        [TestCase(0, 10)]
+        [TestCase(10, 0)]
+        [TestCase(1.9, 8.1)]
+        [TestCase(123.3, -113.3)]
+        public void Substract_AddAToAccumulator_ExpectResult(double a, double expectedResult)
+        {
+            //Arrange
+            uut.Add(10);
+
+            //Act
+            double result = uut.Subtract(a);
+
+            //Assert
+            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+        }
+
 
         [TestCase(2.2, 2.3, 5.06)]
         [TestCase(5.7, 9.1, 51.87)]

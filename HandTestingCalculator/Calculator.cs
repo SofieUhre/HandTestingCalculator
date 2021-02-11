@@ -28,7 +28,7 @@ namespace HandTestingCalculator
             return result;
         }
 
-        public double Substract(double a, double b)
+        public double Subtract(double a, double b)
         {
             double result = a - b;
             return result;
