@@ -49,36 +49,51 @@ namespace HandTestingCalculator
         public double Divide(double devidend, double devisor)
         {
             double result = 0;
-            
             try
             {
-                result = devidend / devisor;
-                Accumulator = result;
+                if (devisor == 0)
+                {
+                    Accumulator = 0;
+                    throw new DivisionByZeroException("Illegal action - devision by zero. Calculator is set to zero");
+                }
+                else
+                {
+                    result = devidend / devisor;
+                    Accumulator = result;
+                }
             }
-            catch (DivideByZeroException e)
+            catch (DivisionByZeroException e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.ErrorMessage);
             }
+            
 
             return result;
         }
 
         public double Divide(double devisor)
         {
+
+            double result = 0;
             try
             {
-                double result = Accumulator/devisor;
-                Accumulator = result;
+                if (devisor == 0)
+                {
+                    Accumulator = 0;
+                    throw new DivisionByZeroException("Illegal action - devision by zero. Calculator is set to zero");
+                }
+                else
+                {
+                    result = Accumulator / devisor;
+                    Accumulator = result;
+                }
             }
-            catch (DivideByZeroException e)
+            catch (DivisionByZeroException e)
             {
-                Console.WriteLine(e);
-                throw;
+                Console.WriteLine(e.ErrorMessage);
             }
 
             return Accumulator;
-
-
         }
 
 
