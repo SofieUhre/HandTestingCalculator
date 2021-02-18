@@ -31,6 +31,7 @@ namespace HandTestingCalculator
         public double Subtract(double a, double b)
         {
             double result = a - b;
+            Accumulator = result;
             return result;
         }
 
@@ -43,6 +44,7 @@ namespace HandTestingCalculator
         public double Multiply(double a, double b)
         {
             double result = a * b;
+            Accumulator = result;
             return result;
         }
 
@@ -55,6 +57,7 @@ namespace HandTestingCalculator
         public double Power(double x, double exp)
         {
             double result = Math.Pow(x, exp);
+            Accumulator = result;
             return result;
         }
 
@@ -67,42 +70,38 @@ namespace HandTestingCalculator
 
         public double Divide(double devidend, double devisor)
         {
-            double result = 0;
+            decimal result = 0;
             try
             {
-                if (devisor == 0)
-                {
-                    throw new myDivsionByZeroException("Du har divideret med 0 din idiot!");
-                }
-                result = devidend / devisor;
 
-                Accumulator = result;
+                result = (decimal)devidend / (decimal)devisor;
+
+                Accumulator = (double)result;
             }
-            catch (myDivsionByZeroException e)
+            catch (Exception e)
             {
-                Accumulator = result;
-                Console.WriteLine(e.ErrorMessage);
+                Accumulator = 0;
+                throw;
             }
+            
 
-            return result;
+            return (double)result;
         }
 
         public double Divide(double devisor)
         {
-            double result = 0;
+            decimal result = 0;
             try
             {
-                if (devisor == 0)
-                {
-                    throw new myDivsionByZeroException("Du har divideret med 0 din idiot!");
-                }
-                result = Accumulator  / devisor;
-                Accumulator = result;
+
+                result = (decimal) Accumulator / (decimal) devisor;
+                
+                Accumulator = (double)result;
             }
-            catch (myDivsionByZeroException e)
+            catch (DivideByZeroException e)
             {
                 Accumulator = 0;
-                Console.WriteLine(e.ErrorMessage);
+                throw;
             }
 
             return Accumulator;

@@ -19,14 +19,18 @@ namespace Calculator_UnitTest
         [Test]
         public void Clear_CallMethod_ExpectZero()
         {
+            //Arrange
+            uut.Add(10);
+
             //Act
             uut.Clear();
 
             //Assert
+
             Assert.That(uut.Accumulator, Is.EqualTo(0));
         }
 
-        [TestCase(2.2, 2.3,4.5)]
+        [TestCase(2.2, 2.3, 4.5)]
         [TestCase(5.7, 9.1, 14.8)]
         [TestCase(3.1, 4.9, 8)]
         [TestCase(106.9, 365.5, 472.4)]
@@ -37,7 +41,11 @@ namespace Calculator_UnitTest
             double result = uut.Add(a, b);
 
             //Assert
-            Assert.AreEqual(result, expectedResult);
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(result, expectedResult);
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.00001));
+            });
         }
 
         [TestCase(2.3, 12.3)]
@@ -54,11 +62,16 @@ namespace Calculator_UnitTest
             double result = uut.Add(added);
 
             //Assert
-            Assert.AreEqual(result, expectedResult);
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(result, expectedResult);
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.00001));
+            });
+
         }
 
         [TestCase(2.2, 2.3, -0.1)]
-        [TestCase(9.1, 5.7,  3.4)]
+        [TestCase(9.1, 5.7, 3.4)]
         [TestCase(3.1, 4.9, -1.8)]
         [TestCase(106.9, 365.5, -258.6)]
         [TestCase(0, 0, 0)]
@@ -68,7 +81,12 @@ namespace Calculator_UnitTest
             double result = uut.Subtract(a, b);
 
             //Assert
-            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.1));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.1));
+            });
+
         }
 
         [TestCase(0, 10)]
@@ -84,7 +102,11 @@ namespace Calculator_UnitTest
             double result = uut.Subtract(a);
 
             //Assert
-            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.01));
+            });
         }
 
 
@@ -99,7 +121,11 @@ namespace Calculator_UnitTest
             double result = uut.Multiply(a, b);
 
             //Assert
-            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.00001));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.00001));
+            });
         }
 
 
@@ -116,20 +142,28 @@ namespace Calculator_UnitTest
             double result = uut.Multiply(a);
 
             //Assert
-            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.001));
+            });
         }
 
         [TestCase(2.2, 2.3, 6.131)]
         [TestCase(5.7, 9.1, 7558945.022)]
         [TestCase(3.1, 4.9, 255.666)]
-        [TestCase(7.5,0,1)]
-        public void Power_AddxAndexp_ExpectResult(double x, double exp, double expectedResult)
+        [TestCase(7.5, 0, 1)]
+        public void Power_AddxAndexp_ExpectResult(double a, double exp, double expectedResult)
         {
             //Act
-            double result = uut.Power(x,exp);
+            double result = uut.Power(a, exp);
 
             //Assert
-            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.001));
+            });
         }
 
         [TestCase(2.2, 2.3, 0.96)]
@@ -140,7 +174,7 @@ namespace Calculator_UnitTest
         {
             //Act
             double result = uut.Divide(devidend, devisor);
-            
+
             //Assert
             Assert.That(result, Is.EqualTo(expectedResult).Within(0.01));
         }
@@ -150,31 +184,39 @@ namespace Calculator_UnitTest
         [TestCase(0.9)]
         [TestCase(0)]
         [TestCase(137.57)]
-        public void Divide_DevideVariableByzero_Exception(double variable)
+        public void Divide_DevideVariableByzero_ThrowsException(double variable)
         {
             //Arrange
             uut.Add(10);
 
-            //Act
-            uut.Divide(variable, 0);
+            //Act and Assert
+            Assert.Multiple(() =>
+           {
+               Assert.Catch<DivideByZeroException>(() => uut.Divide(variable, 0));
+               Assert.That(uut.Accumulator, Is.EqualTo(0));
+           });
 
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(0));
         }
 
-        [TestCase(10,1,10)]
-        [TestCase(10,10, 1)]
-        [TestCase(0,7, 0)]
-        [TestCase(7.5, 2,3.75)]
-        public void Divide_DivideYbyX_expectZ(double y, double x, double z)
+        [TestCase(10, 1, 10)]
+        [TestCase(10, 10, 1)]
+        [TestCase(0, 7, 0)]
+        [TestCase(7.5, 2, 3.75)]
+        public void Divide_DivideYbyX_expectZ(double a, double b, double expectedResult)
         {
             //Arrange
-            uut.Add(y);
+            uut.Add(a);
 
             //Act
-            double result = uut.Divide(x);
+            double result = uut.Divide(b);
 
-            Assert.That(result, Is.EqualTo(z).Within(0.00001));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.00001));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.00001));
+            });
+
 
         }
 
@@ -183,17 +225,17 @@ namespace Calculator_UnitTest
         [TestCase(0.9)]
         [TestCase(0)]
         [TestCase(137.57)]
-        public void Divide_DevideAccumulatorByzero_Exception(double variable)
+        public void Divide_DevideAccumulatorByzero_ThrowsException(double variable)
         {
             //Arrange
             uut.Add(variable);
 
-            //Act
-            uut.Divide(0);
-
-            //Assert
-            Assert.That(uut.Accumulator, Is.EqualTo(0));
-
+            //Act & Assert
+            Assert.Multiple(() =>
+            {
+                Assert.Catch<DivideByZeroException>(() => uut.Divide(0));
+                Assert.That(uut.Accumulator, Is.EqualTo(0));
+            });
         }
 
 
@@ -211,7 +253,11 @@ namespace Calculator_UnitTest
             double result = uut.Power(uut.Accumulator, exp);
 
             //Assert
-            Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.001));
+            });
         }
 
 
