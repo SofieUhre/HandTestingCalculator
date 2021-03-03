@@ -14,6 +14,9 @@ namespace HandTestingCalculator
             double d = 3.2;
             double e = 10.4;
             double f = 8.0;
+            calculator.Divide(10, 0);
+            Console.WriteLine(calculator.Add(20));
+           // calculator.Divide(0);
 
             //Tester Add()
             Console.WriteLine("Testing Add()");
@@ -22,10 +25,10 @@ namespace HandTestingCalculator
             Console.WriteLine("Add({0}, {1}) = {2}", e, f, calculator.Add(e, f));
 
             //Tester Substract()
-            Console.WriteLine("\nTesting Substact()");
-            Console.WriteLine("Substract({0}, {1}) = {2}", a, b, calculator.Substract(a, b));
-            Console.WriteLine("Substract({0}, {1}) = {2}", c, d, calculator.Substract(c, d));
-            Console.WriteLine("Substract({0}, {1}) = {2}", e, f, calculator.Substract(e, f));
+            //Console.WriteLine("\nTesting Substact()");
+            //Console.WriteLine("Substract({0}, {1}) = {2}", a, b, calculator.Subtract(a, b));
+            //Console.WriteLine("Substract({0}, {1}) = {2}", c, d, calculator.Subtract(c, d));
+            //Console.WriteLine("Substract({0}, {1}) = {2}", e, f, calculator.Subtract(e, f));
 
             //Tester Multiply()
             Console.WriteLine("\nTesting Multiply()");
