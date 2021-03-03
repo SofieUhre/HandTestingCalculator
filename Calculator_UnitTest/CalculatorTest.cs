@@ -149,6 +149,26 @@ namespace Calculator_UnitTest
             });
         }
 
+        [TestCase(0,1 )]
+        [TestCase(1,10 )]
+        [TestCase(3,1000 )]
+        [TestCase(4,10000)]
+        public void Power_Add_ExpectResult(double a, double expectedResult)
+        {
+            //Arrange
+            uut.Add(10);
+            
+            //Act
+            double result = uut.Power(a);
+
+            //Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(result, Is.EqualTo(expectedResult).Within(0.001));
+                Assert.That(uut.Accumulator, Is.EqualTo(expectedResult).Within(0.001));
+            });
+        }
+
         [TestCase(2.2, 2.3, 6.131)]
         [TestCase(5.7, 9.1, 7558945.022)]
         [TestCase(3.1, 4.9, 255.666)]
