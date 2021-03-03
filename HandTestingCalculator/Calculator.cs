@@ -13,7 +13,7 @@ namespace HandTestingCalculator
         {
             Accumulator = 0;
         }
-         
+
         public double Add(double a, double b)
         {
             double result = a + b;
@@ -28,64 +28,83 @@ namespace HandTestingCalculator
             return result;
         }
 
-        public double Substract(double a, double b)
+        public double Subtract(double a, double b)
         {
             double result = a - b;
+            Accumulator = result;
             return result;
+        }
+
+        public double Subtract(double a)
+        {
+            Accumulator = Accumulator - a;
+            return Accumulator;
         }
 
         public double Multiply(double a, double b)
         {
             double result = a * b;
+            Accumulator = result;
             return result;
+        }
+
+        public double Multiply(double a)
+        {
+            Accumulator = Accumulator * a;
+            return Accumulator;
         }
 
         public double Power(double x, double exp)
         {
             double result = Math.Pow(x, exp);
+            Accumulator = result;
             return result;
         }
-
-        public double Divide(double devidend, double devisor)
-        {
-            double result = 0;
-            
-            try
-            {
-                result = devidend / devisor;
-                Accumulator = result;
-            }
-            catch (DivideByZeroException e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return result;
-        }
-
-        public double Devide(double devisor)
-        {
-            try
-            {
-                double result = Accumulator/devisor;
-                Accumulator = result;
-            }
-            catch (DivideByZeroException e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return Accumulator;
-
-
-        }
-
 
         public double Power(double exp)
         {
             double result = Math.Pow(Accumulator, exp);
             Accumulator = result;
             return result;
+        }
+
+        public double Divide(double devidend, double devisor)
+        {
+            decimal result = 0;
+            try
+            {
+
+                result = (decimal)devidend / (decimal)devisor;
+
+                Accumulator = (double)result;
+            }
+            catch (Exception e)
+            {
+                Accumulator = 0;
+                throw;
+            }
+            
+
+            return (double)result;
+        }
+
+        public double Divide(double devisor)
+        {
+            decimal result = 0;
+            try
+            {
+
+                result = (decimal) Accumulator / (decimal) devisor;
+                
+                Accumulator = (double)result;
+            }
+            catch (DivideByZeroException e)
+            {
+                Accumulator = 0;
+                throw;
+            }
+
+            return Accumulator;
         }
     }
 }
